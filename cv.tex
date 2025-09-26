@@ -1,0 +1,194 @@
+\documentclass[a4paper,12pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+
+% job listing environments
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    }
+    {
+    }
+
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill &  #2 \\[3.75pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt,label=--]
+    }
+    {
+    \end{itemize}
+    \end{minipage}    
+    }
+
+
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+% \begin{tabularx}{\linewidth}{ @{}X X@{} }
+% \huge{Your Name}\vspace{2pt} & \hfill \emoji{incoming-envelope} email@email.com \\
+% \raisebox{-0.05\height}\faGithub\ username \ | \
+% \raisebox{-0.00\height}\faLinkedin\ username \ | \ \raisebox{-0.05\height}\faGlobe \ mysite.com  & \hfill \emoji{calling} number
+% \end{tabularx}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\Huge{Stefano Quartuccio} \\[7.5pt]
+\href{https://github.com/Lutifya}{\raisebox{-0.05\height}\faGithub\ Lutifya} \ $|$ \ 
+\href{https://www.linkedin.com/in/stefanoquartuccio/}{\raisebox{-0.05\height}\faLinkedin\ stefanoquartuccio} \ $|$ \ 
+\href{https://www.google.com/maps/place/Giussano,+Italy}{\raisebox{-0.05\height}\faGlobe \ Giussano, Italy} \ $|$ \ 
+\href{mailto:stefano.quartuccio@outlook.com}{\raisebox{-0.05\height}\faEnvelope \ stefano.quartuccio@outlook.com} \ $|$ \ 
+\href{tel:+393756046195}{\raisebox{-0.05\height}\faMobile \ +39\,375\,604\,6195} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+
+%Interests/ Keywords/ Summary
+\section{Summary}
+Master's student in Data Science with a strong focus on Artificial Intelligence and Large Language Models. Currently completing a thesis on a RAG-based semantic search engine that includes fine-tuning a 20-billion-parameter language model. Passionate about building robust, efficient, and cutting-edge solutions that combine academic rigor with hands-on software engineering.
+
+%Experience
+\section{Work Experience}
+
+\begin{joblong}{Software Engineer, Elibra srl.}{May 2022 -- present / Italy}
+\item Backend development and maintenance within an Agile (Scrum) product team.
+\item Daily use of Spring Boot, Maven, TDD, and systematic refactoring to ensure code quality and reliability.
+\item Full SDLC ownership including Git-based workflows, algorithmic analysis, debugging, and deployment activities.
+\end{joblong}
+
+\begin{jobshort}{Junior Web Developer, Rc-info srl.}{Apr 2021 -- Apr 2022 / Italy}
+Supported company projects with full-stack web development, evolving features across client and server components.
+\end{jobshort}
+
+\begin{jobshort}{iOS/Android Junior Developer, PlayTime Mobile \textregistered srl.}{Feb 2020 -- Aug 2020 / Italy}
+Collaborated on cross-platform mobile application development during internship.
+\end{jobshort}
+
+\begin{jobshort}{Junior Developer (Internship), Link-up srl.}{Dec 2018 -- Dec 2019 / Italy}
+Supported software development activities while learning company IT processes.
+\end{jobshort}
+  
+%Projects
+\section{Projects}
+
+\begin{tabularx}{\linewidth}{ @{}>{\raggedright\arraybackslash}X r@{} }
+	extbf{Master's Thesis -- Enhancing Legal Workflows: Design and Evaluation of a RAG-Based Semantic Search Engine} & \hfill \href{https://github.com/Lutifya}{Highlights} \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{Built an end-to-end legal RAG platform combining multilingual E5 embeddings, vector database retrieval, and a GPT-OSS 20B LLM fine-tuned with LoRA on synthetic, human-validated datasets; delivered higher accuracy than baseline systems and outlined safeguards for privacy-preserving deployments.}  \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}} 	
+2022 -- Oct 2025 & Master's Degree in Data Science, \textbf{University of Milano-Bicocca} \\ 
+
+2019 -- 2022 & Bachelor's Degree in Informatics, \textbf{University of Milano-Bicocca} \\
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+% \section{Publications}
+% \begin{refsection}[citations.bib]
+% \nocite{*}
+% \printbibliography[heading=none]
+% \end{refsection}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+Programming Languages &  \normalsize{\textbf{Experienced:} Python, Java \quad \textbf{Familiar:} JavaScript, PHP, Bash, Scheme}\\
+AI / ML Libraries  &  \normalsize{PyTorch, Scikit-learn, Pandas, NumPy, Hugging Face Transformers, LangChain}\\  
+AI / ML Concepts & \normalsize{Natural Language Processing, Retrieval-Augmented Generation (RAG), LLM Fine-tuning, Vector Databases, Semantic Search}\\
+Frameworks \& Tools & \normalsize{Spring Boot, Maven, Git, Docker, Agile (Scrum), Jira}\\
+Languages & \normalsize{\textbf{Native:} Italian \quad \textbf{Fluent:} English}\\
+\end{tabularx}
+
+
+\end{document}
